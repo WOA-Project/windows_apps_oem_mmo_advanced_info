@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="AdvancedInfo.Pages.MainInformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AdvancedInfo.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <GridView x:Name="gridView" IsItemClickEnabled="False" SelectionMode="None">
+        <GridView.Header>
+            <Grid x:Name="Header" Height="300">
+                <Rectangle x:Name="OverlayRectangle" Fill="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}"/>
+                <Grid x:Name="BigHeader" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="ProfileImage" Height="150" Width="150" HorizontalAlignment="Center">
+                        <Rectangle.Fill>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Lumia950.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <TextBlock Margin="16,16,16,0" Grid.Row="1" x:Name="TitleBlock" Text="Undefined" FontSize="20" TextAlignment="Center" TextWrapping="Wrap"/>
+                    <TextBlock Margin="16,4,16,0" Grid.Row="2" x:Name="SubtitleBlock" Text="Undefined" FontSize="14" TextWrapping="Wrap" TextAlignment="Center"/>
+
+                    <StackPanel Grid.Row="3">
+                        <StackPanel x:Name="ButtonPanel">
+                            <Grid Margin="16,16,16,0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Style="{ThemeResource TextBlockButtonStyle}" Click="GetSupport_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="Help"/>
+                                        <TextBlock Text="Get Support" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Grid.Column="1" Style="{ThemeResource TextBlockButtonStyle}" Click="GetAccessories_Click">
+                                    <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                                        <SymbolIcon Symbol="Add"/>
+                                        <TextBlock Text="Get accessories" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Grid.Column="2" Style="{ThemeResource TextBlockButtonStyle}" Click="More_Click">
+                                    <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                                        <SymbolIcon Symbol="More"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GridView.Header>
+        <GridView.ItemContainerStyle>
+            <Style TargetType="GridViewItem">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </GridView.ItemContainerStyle>
+        <GridViewItem>
+            <StackPanel Padding="20">
+                <StackPanel Padding="0,0,0,16" Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE835;" Margin="0,1,14,0"/>
+                    <TextBlock Text="Software release" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Padding="0,0,0,16" Orientation="Horizontal" Tapped="ReleasePanel_Tapped">
+                    <TextBlock Text="Lumia Windows 10 on ARM" FontWeight="Bold" FontSize="24" TextWrapping="Wrap" Foreground="DarkSlateBlue"/>
+                    <FontIcon Glyph="&#xE946;" Margin="14,4,0,0" FontSize="24" FontWeight="Bold" Foreground="DarkSlateBlue"/>
+                </StackPanel>
+
+                <TextBlock Padding="0,0,0,32" Text="This software release is still in preview, and may break important functionality of your phone. For more information and support, please tap on the information icon." TextWrapping="Wrap"/>
+
+                <StackPanel Padding="0,0,0,16" Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE950;" Margin="0,1,14,0"/>
+                    <TextBlock Text="Device information" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
+                </StackPanel>
+
+                <TextBlock Text="RAM" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="RAM"/>
+
+                <TextBlock Text="Chip SOC version" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="CSV"/>
+
+                <TextBlock Text="Manufacturer Name" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="OEM"/>
+
+                <TextBlock Text="Core Build ID" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="Build"/>
+
+                <StackPanel x:Name="HardwareInfoPanel" Visibility="Collapsed">
+                    <TextBlock Text="Product Code" Opacity="0.75"/>
+                    <TextBlock Padding="0,0,0,8" x:Name="PC"/>
+
+                    <TextBlock Text="Hardware Revision" Opacity="0.75"/>
+                    <TextBlock Padding="0,0,0,8" x:Name="HR"/>
+                </StackPanel>
+
+
+                <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
+                    <FontIcon Glyph="&#xEDA2;" Margin="0,1,14,0"/>
+                    <TextBlock Text="Storage" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
+                </StackPanel>
+
+                <TextBlock Text="Internal Storage" Opacity="0.75"/>
+                <ProgressBar Margin="0,0,0,8" x:Name="InternalStorageUsage" Height="18"/>
+                <TextBlock Padding="0,0,0,8" x:Name="UsageDesc" TextAlignment="Right"/>
+
+                <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE717;" Margin="0,1,14,0"/>
+                    <TextBlock Text="Phone" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
+                </StackPanel>
+
+                <TextBlock Text="Service Provider" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="SP"/>
+
+                <TextBlock Text="Mobile Operator" Opacity="0.75"/>
+                <TextBlock Padding="0,0,0,8" x:Name="MO"/>
+
+                <StackPanel x:Name="IMEIPanel" Visibility="Collapsed">
+                    <TextBlock Text="IMEI-SV" Opacity="0.75"/>
+                    <TextBlock Padding="0,0,0,8" x:Name="IMEI"/>
+                </StackPanel>
+
+                <TextBlock Text="Modem(s) Information" Opacity="0.75"/>
+                <ListView Padding="0,0,0,8" x:Name="PhoneListView" SelectionMode="None" IsItemClickEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+
+                <StackPanel x:Name="RegulatoryPanel" Visibility="Collapsed">
+                    <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xEB95;" Margin="0,1,14,0"/>
+                        <TextBlock Text="Regulatory" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="ManufactureCountry" Padding="0,0,0,8" Text="MADE IN N/A"/>
+                    <Image x:Name="RegulatoryImage" HorizontalAlignment="Left" Stretch="Fill" MaxWidth="400"/>
+                </StackPanel>
+            </StackPanel>
+        </GridViewItem>
+    </GridView>
+</Page>

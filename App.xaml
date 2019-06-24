@@ -1,0 +1,23 @@
+﻿<Application
+    x:Class="AdvancedInfo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AdvancedInfo">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <x:Boolean x:Key="IsDarkTheme">false</x:Boolean>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <x:Boolean x:Key="IsDarkTheme">true</x:Boolean>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Default">
+                    <x:Boolean x:Key="IsDarkTheme">false</x:Boolean>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
