@@ -9,8 +9,8 @@
 
   <Identity
     Name="LumiaWOA.AdvancedInfo"
-    Publisher="CN=LumiaWOA"
-    Version="1.0.15.0" />
+    Publisher="CN=Windows On Lumia Second Party Application Publisher"
+    Version="1.0.16.0" />
 
   <mp:PhoneIdentity PhoneProductId="66485c6e-313f-47f3-a3fa-9b2721268a84" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

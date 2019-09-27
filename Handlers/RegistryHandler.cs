@@ -21,6 +21,7 @@ namespace AdvancedInfo.Handlers
                 Manufacturer = ReadRegistryStringFromDTI("PhoneManufacturer");
             ModelName = ReadRegistryStringFromDTI("PhoneModelName");
             ProductCodeCleaned = ReadRegistryStringFromDTI("PhoneHardwareVariant");
+            ReleaseName = ReadRegistryStringFromDTI("PhoneReleaseVersion");
         }
 
         private string ReadRegistryStringFromDTI(string Value)
@@ -47,5 +48,6 @@ namespace AdvancedInfo.Handlers
         public string SOC { get; internal set; }
         public string Manufacturer { get; internal set; }
         public string ModelName { get; internal set; }
+        public string ReleaseName { get; internal set; }
     }
 }

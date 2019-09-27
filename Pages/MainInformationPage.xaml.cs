@@ -124,20 +124,46 @@ namespace AdvancedInfo.Pages
 
         private async void RetrieveData()
         {
-            internalhandler = new InternalHandler();
-            reghandler = new RegistryHandler();
-            modemhandler = await ModemHandler.LoadHandlerAsync();
+            try
+            {
+                internalhandler = new InternalHandler();
+                RAM.Text = internalhandler.RAM;
+                Build.Text = internalhandler.FirmwareBuild;
+            }
+            catch
+            {
 
-            RAM.Text = internalhandler.RAM;
-            Build.Text = internalhandler.FirmwareBuild;
-            PhoneListView.ItemsSource = modemhandler.ModemInformation;
+            }
 
-            OEM.Text = reghandler.ProductCode;
-            MO.Text = reghandler.MobileOperator;
-            SP.Text = reghandler.ServiceProvider;
-            CSV.Text = reghandler.SOC;
-            TitleBlock.Text = reghandler.Manufacturer + " " + reghandler.ModelName;
-            SubtitleBlock.Text = reghandler.ProductCodeCleaned;
+            try
+            {
+                modemhandler = await ModemHandler.LoadHandlerAsync();
+                PhoneListView.ItemsSource = modemhandler.ModemInformation;
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                reghandler = new RegistryHandler();
+                OEM.Text = reghandler.ProductCode;
+                MO.Text = reghandler.MobileOperator;
+                SP.Text = reghandler.ServiceProvider;
+                CSV.Text = reghandler.SOC;
+                TitleBlock.Text = reghandler.Manufacturer + " " + reghandler.ModelName;
+                SubtitleBlock.Text = reghandler.ProductCodeCleaned;
+
+                if (reghandler.ReleaseName != null)
+                {
+                    VersionNameText.Text = VersionNameText.Text.Replace("XXXX", reghandler.ReleaseName);
+                }
+            }
+            catch
+            {
+                
+            }
 
             try
             {
