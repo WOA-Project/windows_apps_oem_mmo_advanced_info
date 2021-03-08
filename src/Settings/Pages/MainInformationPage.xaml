@@ -81,7 +81,18 @@
                     <FontIcon Glyph="&#xE946;" Margin="14,4,0,0" FontSize="24" FontWeight="Bold" Foreground="DarkSlateBlue"/>
                 </StackPanel>
 
-                <TextBlock Padding="0,0,0,32" Text="This software release is still in preview, and may break important functionality of your phone. For more information and support, please tap on the information icon." TextWrapping="Wrap"/>
+                <TextBlock Text="This project was made possible by:" TextWrapping="Wrap"/>
+                <TextBlock Text="- ADeltaX" TextWrapping="Wrap"/>
+                <TextBlock Text="- Googulator" TextWrapping="Wrap"/>
+                <TextBlock Text="- gus33000" TextWrapping="Wrap"/>
+                <TextBlock Text="- imbushuo" TextWrapping="Wrap"/>
+                <TextBlock Text="- @never_released" TextWrapping="Wrap"/>
+                <TextBlock Text="- Heathcliff74 for WPInternals" TextWrapping="Wrap"/>
+                <TextBlock Text="- Our friends in China that worked hard to bring the Hapanero ARM64 firmware into the public and that provided test hardware for us." TextWrapping="Wrap"/>
+                <TextBlock Text="- Our testers, you know who you are :)" TextWrapping="Wrap"/>
+                <TextBlock Text="- The Windows RT Lumia projects" TextWrapping="Wrap"/>
+                <TextBlock Text="- Qualcomm and Microsoft" TextWrapping="Wrap"/>
+                <TextBlock Padding="0,0,0,32" Text="- and many other friends and contacts which would be too long to list here" TextWrapping="Wrap"/>
 
                 <StackPanel Padding="0,0,0,16" Orientation="Horizontal">
                     <FontIcon Glyph="&#xE950;" Margin="0,1,14,0"/>
