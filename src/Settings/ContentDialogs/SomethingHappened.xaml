@@ -8,7 +8,9 @@
     mc:Ignorable="d"
     Title="Something happened"
     PrimaryButtonText="Ok"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Primary">
 
     <Grid>
         <TextBlock x:Name="CrashText" TextWrapping="Wrap"/>

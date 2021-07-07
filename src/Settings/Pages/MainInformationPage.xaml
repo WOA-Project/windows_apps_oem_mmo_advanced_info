@@ -5,13 +5,17 @@
     xmlns:local="using:AdvancedInfo.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:advancedinfo="using:AdvancedInfo"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
-    <GridView x:Name="gridView" IsItemClickEnabled="False" SelectionMode="None">
-        <GridView.Header>
+    <ScrollViewer x:Name="scrollViewer"
+                  VerticalScrollBarVisibility="Auto"
+                  VerticalScrollMode="Auto">
+        <StackPanel>
             <Grid x:Name="Header" Height="300">
-                <Rectangle x:Name="OverlayRectangle" Fill="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}"/>
+                <Rectangle x:Name="OverlayRectangle" Fill="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"/>
                 <Grid x:Name="BigHeader" Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -37,136 +41,178 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Button Style="{ThemeResource TextBlockButtonStyle}" Click="GetSupport_Click">
+                                <HyperlinkButton Click="GetSupport_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <SymbolIcon Symbol="Help"/>
                                         <TextBlock Text="Get Support" Margin="10,0,0,0"/>
                                     </StackPanel>
-                                </Button>
+								</HyperlinkButton>
 
-                                <Button Grid.Column="1" Style="{ThemeResource TextBlockButtonStyle}" Click="GetAccessories_Click">
+                                <HyperlinkButton Grid.Column="1" Click="GetAccessories_Click">
                                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                                         <SymbolIcon Symbol="Add"/>
                                         <TextBlock Text="Get accessories" Margin="10,0,0,0"/>
                                     </StackPanel>
-                                </Button>
+                                </HyperlinkButton>
 
-                                <Button Grid.Column="2" Style="{ThemeResource TextBlockButtonStyle}" Click="More_Click">
+                                <HyperlinkButton Grid.Column="2" Click="More_Click">
                                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                                         <SymbolIcon Symbol="More"/>
                                     </StackPanel>
-                                </Button>
+                                </HyperlinkButton>
                             </Grid>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>
-        </GridView.Header>
-        <GridView.ItemContainerStyle>
-            <Style TargetType="GridViewItem">
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>
-        </GridView.ItemContainerStyle>
-        <GridViewItem>
+
             <StackPanel Padding="20">
-                <StackPanel Padding="0,0,0,16" Orientation="Horizontal">
-                    <FontIcon Glyph="&#xE835;" Margin="0,1,14,0"/>
-                    <TextBlock Text="Software release" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
-                </StackPanel>
+                <advancedinfo:SettingsBlockControl Title="Software release"
+                                                   Description="Information about your device software"
+                                                   HorizontalAlignment="Stretch">
+                    <advancedinfo:SettingsBlockControl.Icon>
+                        <FontIcon Glyph="&#xE835;" />
+                    </advancedinfo:SettingsBlockControl.Icon>
 
-                <StackPanel Padding="0,0,0,16" Orientation="Horizontal" Tapped="ReleasePanel_Tapped">
-                    <TextBlock x:Name="VersionNameText" Text="Lumia Windows on ARM XXXX" FontWeight="Bold" FontSize="24" TextWrapping="Wrap" Foreground="DarkSlateBlue"/>
-                    <FontIcon Glyph="&#xE946;" Margin="14,4,0,0" FontSize="24" FontWeight="Bold" Foreground="DarkSlateBlue"/>
-                </StackPanel>
+                    <advancedinfo:SettingsBlockControl.ExpandableContent>
+                        <StackPanel Margin="58,16,16,16">
+                            <StackPanel Padding="0,0,0,16" Orientation="Horizontal" Tapped="ReleasePanel_Tapped">
+                                <TextBlock x:Name="VersionNameText" Text="Lumia Windows on ARM XXXX" FontWeight="Bold" FontSize="24" TextWrapping="Wrap" Foreground="DarkSlateBlue"/>
+                                <FontIcon Glyph="&#xE946;" Margin="14,4,0,0" FontSize="24" FontWeight="Bold" Foreground="DarkSlateBlue"/>
+                            </StackPanel>
 
-                <TextBlock Text="This project was made possible by:" TextWrapping="Wrap"/>
-                <TextBlock Text="- ADeltaX" TextWrapping="Wrap"/>
-                <TextBlock Text="- Googulator" TextWrapping="Wrap"/>
-                <TextBlock Text="- gus33000" TextWrapping="Wrap"/>
-                <TextBlock Text="- imbushuo" TextWrapping="Wrap"/>
-                <TextBlock Text="- @never_released" TextWrapping="Wrap"/>
-                <TextBlock Text="- Heathcliff74 for WPInternals" TextWrapping="Wrap"/>
-                <TextBlock Text="- Our friends in China that worked hard to bring the Hapanero ARM64 firmware into the public and that provided test hardware for us." TextWrapping="Wrap"/>
-                <TextBlock Text="- Our testers, you know who you are :)" TextWrapping="Wrap"/>
-                <TextBlock Text="- The Windows RT Lumia projects" TextWrapping="Wrap"/>
-                <TextBlock Text="- Qualcomm and Microsoft" TextWrapping="Wrap"/>
-                <TextBlock Padding="0,0,0,32" Text="- and many other friends and contacts which would be too long to list here" TextWrapping="Wrap"/>
+                            <TextBlock Text="This project was made possible by:" TextWrapping="Wrap"/>
+                            <TextBlock Text="- ADeltaX" TextWrapping="Wrap"/>
+                            <TextBlock Text="- Googulator" TextWrapping="Wrap"/>
+                            <TextBlock Text="- gus33000" TextWrapping="Wrap"/>
+                            <TextBlock Text="- imbushuo" TextWrapping="Wrap"/>
+                            <TextBlock Text="- @never_released" TextWrapping="Wrap"/>
+                            <TextBlock Text="- Heathcliff74 for WPInternals" TextWrapping="Wrap"/>
+                            <TextBlock Text="- Our friends in China that worked hard to bring the Hapanero ARM64 firmware into the public and that provided test hardware for us." TextWrapping="Wrap"/>
+                            <TextBlock Text="- Our testers, you know who you are :)" TextWrapping="Wrap"/>
+                            <TextBlock Text="- The Windows RT Lumia projects" TextWrapping="Wrap"/>
+                            <TextBlock Text="- Qualcomm and Microsoft" TextWrapping="Wrap"/>
+                            <TextBlock Text="- and many other friends and contacts which would be too long to list here" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </advancedinfo:SettingsBlockControl.ExpandableContent>
+                </advancedinfo:SettingsBlockControl>
 
-                <StackPanel Padding="0,0,0,16" Orientation="Horizontal">
-                    <FontIcon Glyph="&#xE950;" Margin="0,1,14,0"/>
-                    <TextBlock Text="Device information" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
-                </StackPanel>
+                <advancedinfo:SettingsBlockControl Title="Device information"
+                                                   Description="Information about your device hardware"
+                                                   HorizontalAlignment="Stretch">
+                    <advancedinfo:SettingsBlockControl.Icon>
+                        <FontIcon Glyph="&#xE950;" />
+                    </advancedinfo:SettingsBlockControl.Icon>
 
-                <TextBlock Text="RAM" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="RAM"/>
+                    <advancedinfo:SettingsBlockControl.ExpandableContent>
+                        <Grid Margin="58,16,16,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                <TextBlock Text="Chip SOC version" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="CSV"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Padding="0,0,0,8" Text="RAM" Opacity="0.75"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Padding="32,0,0,8" x:Name="RAM"/>
 
-                <TextBlock Text="Manufacturer Name" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="OEM"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Padding="0,0,0,8" Text="Chip SOC version" Opacity="0.75"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Padding="32,0,0,8" x:Name="CSV"/>
 
-                <TextBlock Text="Core Build ID" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="Build"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Padding="0,0,0,8" Text="Manufacturer Name" Opacity="0.75"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Padding="32,0,0,8" x:Name="OEM"/>
 
-                <StackPanel x:Name="HardwareInfoPanel" Visibility="Collapsed">
-                    <TextBlock Text="Product Code" Opacity="0.75"/>
-                    <TextBlock Padding="0,0,0,8" x:Name="PC"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Padding="0,0,0,8" Text="Core Build ID" Opacity="0.75"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Padding="32,0,0,8" x:Name="Build"/>
 
-                    <TextBlock Text="Hardware Revision" Opacity="0.75"/>
-                    <TextBlock Padding="0,0,0,8" x:Name="HR"/>
-                </StackPanel>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Padding="0,0,0,8" Text="Product Code" Opacity="0.75"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Padding="32,0,0,8" x:Name="PC"/>
 
+                            <TextBlock Grid.Row="5" Grid.Column="0" Padding="0,0,0,8" Text="Hardware Revision" Opacity="0.75"/>
+                            <TextBlock Grid.Row="5" Grid.Column="1" Padding="32,0,0,8" x:Name="HR"/>
+                        </Grid>
+                    </advancedinfo:SettingsBlockControl.ExpandableContent>
+                </advancedinfo:SettingsBlockControl>
 
-                <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
-                    <FontIcon Glyph="&#xEDA2;" Margin="0,1,14,0"/>
-                    <TextBlock Text="Storage" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
-                </StackPanel>
+                <advancedinfo:SettingsBlockControl Title="Storage"
+                                                   Description="Internal Storage"
+                                                   HorizontalAlignment="Stretch">
+                    <advancedinfo:SettingsBlockControl.Icon>
+                        <FontIcon Glyph="&#xEDA2;" />
+                    </advancedinfo:SettingsBlockControl.Icon>
 
-                <TextBlock Text="Internal Storage" Opacity="0.75"/>
-                <ProgressBar Margin="0,0,0,8" x:Name="InternalStorageUsage" Height="18"/>
-                <TextBlock Padding="0,0,0,8" x:Name="UsageDesc" TextAlignment="Right"/>
+                    <StackPanel Margin="0,4">
+                        <ProgressBar Margin="0,0,0,8" x:Name="InternalStorageUsage"/>
+                        <TextBlock x:Name="UsageDesc" TextAlignment="Right"/>
+                    </StackPanel>
+                </advancedinfo:SettingsBlockControl>
+                
+                <advancedinfo:SettingsBlockControl Title="Phone"
+                                                   Description="Information about your phone hardware"
+                                                   HorizontalAlignment="Stretch">
+                    <advancedinfo:SettingsBlockControl.Icon>
+                        <FontIcon Glyph="&#xE717;" />
+                    </advancedinfo:SettingsBlockControl.Icon>
 
-                <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
-                    <FontIcon Glyph="&#xE717;" Margin="0,1,14,0"/>
-                    <TextBlock Text="Phone" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
-                </StackPanel>
+                    <advancedinfo:SettingsBlockControl.ExpandableContent>
+                        <Grid Margin="58,16,16,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                <TextBlock Text="Service Provider" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="SP"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Padding="0,0,0,8" Text="Service Provider" Opacity="0.75"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,0,8" x:Name="SP"/>
 
-                <TextBlock Text="Mobile Operator" Opacity="0.75"/>
-                <TextBlock Padding="0,0,0,8" x:Name="MO"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Padding="0,0,0,8" Text="Mobile Operator" Opacity="0.75"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Padding="0,0,0,8" x:Name="MO"/>
 
-                <StackPanel x:Name="IMEIPanel" Visibility="Collapsed">
-                    <TextBlock Text="IMEI-SV" Opacity="0.75"/>
-                    <TextBlock Padding="0,0,0,8" x:Name="IMEI"/>
-                </StackPanel>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Padding="0,0,0,8" Text="IMEI-SV" Opacity="0.75"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Padding="0,0,0,8" x:Name="IMEI"/>
 
-                <TextBlock Text="Modem(s) Information" Opacity="0.75"/>
-                <ListView Padding="0,0,0,8" x:Name="PhoneListView" SelectionMode="None" IsItemClickEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Padding" Value="0"/>
-                            <Setter Property="Margin" Value="0"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-
+                            <TextBlock Grid.Row="3" Grid.Column="0" Padding="0,0,0,8" Text="Modem(s) Information" Opacity="0.75"/>
+                            <ListView Grid.Row="3" Grid.Column="1" Padding="0,0,0,8" x:Name="PhoneListView" SelectionMode="None" IsItemClickEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+                        </Grid>
+                    </advancedinfo:SettingsBlockControl.ExpandableContent>
+                </advancedinfo:SettingsBlockControl>
 
                 <StackPanel x:Name="RegulatoryPanel" Visibility="Collapsed">
-                    <StackPanel Padding="0,32,0,16" Orientation="Horizontal">
-                        <FontIcon Glyph="&#xEB95;" Margin="0,1,14,0"/>
-                        <TextBlock Text="Regulatory" FontSize="18" TextWrapping="Wrap" FontWeight="Bold"/>
-                    </StackPanel>
+                    <advancedinfo:SettingsBlockControl Title="Regulatory"
+                                                   Description="Regulatory Information about your device"
+                                                   HorizontalAlignment="Stretch">
+                        <advancedinfo:SettingsBlockControl.Icon>
+                            <FontIcon Glyph="&#xEB95;" />
+                        </advancedinfo:SettingsBlockControl.Icon>
 
-                    <TextBlock x:Name="ManufactureCountry" Padding="0,0,0,8" Text="MADE IN N/A"/>
-                    <Image x:Name="RegulatoryImage" HorizontalAlignment="Left" Stretch="Fill" MaxWidth="400"/>
+                        <advancedinfo:SettingsBlockControl.ExpandableContent>
+                            <StackPanel Margin="58,16,16,16">
+                                <TextBlock x:Name="ManufactureCountry" Padding="0,0,0,8" Text="MADE IN N/A"/>
+                                <Image x:Name="RegulatoryImage" HorizontalAlignment="Left" Stretch="Fill" MaxWidth="400"/>
+                            </StackPanel>
+                        </advancedinfo:SettingsBlockControl.ExpandableContent>
+                    </advancedinfo:SettingsBlockControl>
                 </StackPanel>
             </StackPanel>
-        </GridViewItem>
-    </GridView>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

@@ -62,13 +62,8 @@ namespace AdvancedInfo.Pages
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            // Retrieve the ScrollViewer that the GridView is using internally
-            var scrollViewer = gridView.GetFirstDescendantOfType<ScrollViewer>();
-
             // Update the ZIndex of the header container so that the header is above the items when scrolling
-            var headerPresenter = (UIElement)VisualTreeHelper.GetParent((UIElement)gridView.Header);
-            var headerContainer = (UIElement)VisualTreeHelper.GetParent(headerPresenter);
-            Canvas.SetZIndex((UIElement)headerContainer, 1);
+            Canvas.SetZIndex(Header, 1);
 
             // Get the PropertySet that contains the scroll values from the ScrollViewer
             _scrollerPropertySet = ElementCompositionPreview.GetScrollViewerManipulationPropertySet(scrollViewer);
@@ -168,9 +163,6 @@ namespace AdvancedInfo.Pages
             try
             {
                 dpphandler = await DPPHandler.LoadHandlerAsync();
-                IMEIPanel.Visibility = Visibility.Visible;
-                RegulatoryPanel.Visibility = Visibility.Visible;
-                HardwareInfoPanel.Visibility = Visibility.Visible;
 
                 IMEI.Text = dpphandler.IMEI;
                 ManufactureCountry.Text = dpphandler.COO;

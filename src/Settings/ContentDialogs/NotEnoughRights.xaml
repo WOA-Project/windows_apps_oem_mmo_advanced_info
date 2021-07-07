@@ -10,7 +10,9 @@
     PrimaryButtonText="Yes"
     SecondaryButtonText="No"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Primary">
 
     <TextBlock Text="In order to show you more information, Advanced Info requires you to grant File System access rights to this app. Would you like to do this now? (This will open the settings app for you)" TextWrapping="Wrap"/>
 </ContentDialog>
