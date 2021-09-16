@@ -264,7 +264,7 @@
       <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.6.2</Version>
+      <Version>2.7.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
