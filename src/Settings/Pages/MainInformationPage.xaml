@@ -67,6 +67,11 @@
             </Grid>
 
             <StackPanel Padding="20">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
                 <advancedinfo:SettingsBlockControl Title="Software release"
                                                    Description="Information about your device software"
                                                    HorizontalAlignment="Stretch">
